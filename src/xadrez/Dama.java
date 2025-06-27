@@ -9,6 +9,7 @@ public class Dama extends Peca {
 
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
+        if (linhaO == linhaD && colunaO == colunaD) return false;
         int difLinha = Math.abs(linhaO - linhaD);
         int difColuna = Math.abs(colunaO - colunaD);
         return (linhaO == linhaD || colunaO == colunaD || difLinha == difColuna);
