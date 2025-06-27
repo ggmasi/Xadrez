@@ -1,13 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package xadrez;
 
-/**
- *
- * @author ggmasi
- */
-public class Rei {
+public class Rei extends Peca {
+    
+    public Rei(String cor) {
+        super(cor);
+        this.representacao = 'K';
+    }
+    
+    @Override
+    public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
+        if ((Math.abs(linhaO - linhaD) > 1) || (Math.abs(colunaO - colunaD) > 1)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    @Override
+    public String caminho(int linhaO, char colunaO, int linhaD, char colunaD) {
+        if (movimentoValido(linhaO, colunaO, linhaD, colunaD)) {
+            return "" + linhaO + colunaO + linhaD + colunaD;
+        } else {
+            return "";
+        }
+    }
     
 }
