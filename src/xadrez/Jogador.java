@@ -9,5 +9,5 @@ package xadrez;
  * @author ggmasi
  */
 public class Jogador {
-    
+
 }
