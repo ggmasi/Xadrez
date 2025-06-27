@@ -63,7 +63,7 @@ public class Tabuleiro {
         
         casas[0][2].setPeca(bispo1b);
         
-        Rainha rainhab = new Rainha("branco");
+        Dama rainhab = new Dama("branco");
         
         casas[0][3].setPeca(rainhab);
         
@@ -100,7 +100,7 @@ public class Tabuleiro {
         
         casas[7][2].setPeca(bispo1p);
         
-        Rainha rainhap = new Rainha("preto");
+        Dama rainhap = new Dama("preto");
         
         casas[7][3].setPeca(rainhap);
         
@@ -132,20 +132,5 @@ public class Tabuleiro {
         
         return true;    
     }*/
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
