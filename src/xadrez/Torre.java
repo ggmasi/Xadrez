@@ -9,6 +9,7 @@ public class Torre extends Peca {
 
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
+        if (linhaO == linhaD && colunaO == colunaD) return false;
         return (linhaO == linhaD || colunaO == colunaD);
     }
 
