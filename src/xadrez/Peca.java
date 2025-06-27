@@ -17,6 +17,11 @@ public abstract class Peca {
         return "" + this.representacao + corletra;
     }
     
+    public String getCor(){
+        return this.cor;
+    }
+    
+    
     public abstract boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD);
     
     public abstract String caminho(int linhaO, char colunaO, int linhaD, char colunaD);
