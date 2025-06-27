@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package xadrez;
 
-/**
- *
- * @author ggmasi
- */
-public class Peca {
+public abstract class Peca {
+    protected String cor;
+    protected char representacao;
+    
+    public Peca (String cor) {
+        this.cor = cor;
+    }
+    
+    public String desenho(){
+        char corletra;
+        if(this.cor.equals("preto"))
+            corletra = 'p';
+        else
+            corletra = 'b';
+        return "" + this.representacao + corletra;
+    }
+    
+    public abstract boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD);
+    
+    public abstract String caminho(int linhaO, char colunaO, int linhaD, char colunaD);
     
 }
