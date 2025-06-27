@@ -4,6 +4,10 @@ package xadrez;
  *
  * @author ggmasi
  */
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tabuleiro {
     
     private Casa[][] casas;
@@ -132,5 +136,26 @@ public class Tabuleiro {
         
         return true;    
     }*/
+
+    public List<Casa> getCasasComPecaDaCor(String cor) {
+    List<Casa> casasFiltradas = new ArrayList<>();
+
+    for (int linha = 0; linha < 8; linha++) {
+        for (int coluna = 0; coluna < 8; coluna++) {
+            Casa casa = casas[linha][coluna];
+
+            if (casa.temPeca() && casa.getPeca().getCor().equalsIgnoreCase(cor)) {
+                casasFiltradas.add(casa);
+            }
+        }
+    }
+
+    return casasFiltradas;
+}
+
+
+
+
+
 
 }
