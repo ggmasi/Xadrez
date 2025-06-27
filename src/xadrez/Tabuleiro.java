@@ -55,15 +55,85 @@ public class Tabuleiro {
         
         casas[0][0].setPeca(torre1b);
         
+        Cavalo cavalo1b = new Cavalo("branco");
         
+        casas[0][1].setPeca(cavalo1b);
         
+        Bispo bispo1b = new Bispo("branco");
         
+        casas[0][2].setPeca(bispo1b);
         
+        Rainha rainhab = new Rainha("branco");
         
+        casas[0][3].setPeca(rainhab);
         
-    }
+        Rei reib = new Rei("branco");
+        
+        casas[0][4].setPeca(reib);
+        
+        Bispo bispo2b = new Bispo("branco");
+        
+        casas[0][5].setPeca(bispo2b);
+        
+        Cavalo cavalo2b = new Cavalo("branco");
+        
+        casas[0][6].setPeca(cavalo2b);
+        
+        Torre torre2b = new Torre("branco");
+        
+        for(int i = 0; i < 7; i++){
+            Peao peaob = new Peao("branco");
+            casas[1][i].setPeca(peaob);
+        }
+        
+        // inicia lado preto
+        
+        Torre torre1p = new Torre("preto");
+        
+        casas[7][0].setPeca(torre1p);
+        
+        Cavalo cavalo1p = new Cavalo("preto");
+        
+        casas[7][1].setPeca(cavalo1p);
+        
+        Bispo bispo1p = new Bispo("preto");
+        
+        casas[7][2].setPeca(bispo1p);
+        
+        Rainha rainhap = new Rainha("preto");
+        
+        casas[7][3].setPeca(rainhap);
+        
+        Rei reip = new Rei("preto");
+        
+        casas[7][4].setPeca(reip);
+        
+        Bispo bispo2p = new Bispo("preto");
+        
+        casas[7][5].setPeca(bispo2p);
+        
+        Cavalo cavalo2p = new Cavalo("preto");
+        
+        casas[7][6].setPeca(cavalo2p);
+        
+        Torre torre2p = new Torre("preto");
+        
+        for(int i = 0; i < 7; i++){
+            Peao peaop = new Peao("preto");
+            casas[6][i].setPeca(peaop);
+        }  
+    } // tabuleiro iniciado
+    
+    
+   /* public boolean setPeca(int linha, char coluna, Peca peca){
+        if(!noLimite(linha, coluna)) return false;
+        
+        casas[linha][coluna - 'a'].setPeca(peca); 
+        
+        return true;    
+    }*/
 
-
+    
 
 
 
@@ -79,4 +149,3 @@ public class Tabuleiro {
 
 
 }
-
