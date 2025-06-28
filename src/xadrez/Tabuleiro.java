@@ -8,7 +8,7 @@ package xadrez;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tabuleiro {
+public class Tabuleiro{
     
     private Casa[][] casas;
     
@@ -85,6 +85,8 @@ public class Tabuleiro {
         
         Torre torre2b = new Torre("branco");
         
+        casas[0][7].setPeca(torre2b);
+        
         for(int i = 0; i < 7; i++){
             Peao peaob = new Peao("branco");
             casas[1][i].setPeca(peaob);
@@ -122,6 +124,8 @@ public class Tabuleiro {
         
         Torre torre2p = new Torre("preto");
         
+        casas[7][7].setPeca(torre2p);
+        
         for(int i = 0; i < 7; i++){
             Peao peaop = new Peao("preto");
             casas[6][i].setPeca(peaop);
@@ -129,14 +133,6 @@ public class Tabuleiro {
     } // tabuleiro iniciado
     
     
-   /* public boolean setPeca(int linha, char coluna, Peca peca){
-        if(!noLimite(linha, coluna)) return false;
-        
-        casas[linha][coluna - 'a'].setPeca(peca); 
-        
-        return true;    
-    }*/
-
     public List<Casa> getCasasComPecaDaCor(String cor) {
     List<Casa> casasFiltradas = new ArrayList<>();
 
@@ -149,11 +145,25 @@ public class Tabuleiro {
             }
         }
     }
+    
+    
 
     return casasFiltradas;
 }
 
-
+    public Casa encontraRei(String corRei){
+        for(int linha = 0; linha < 8; linha++){
+            for(int coluna = 0; coluna < 8; coluna++){
+                Casa casa = casas[linha][coluna];
+                if(casa.getPeca().getRepresentacao() == 'K' || casa.getPeca().getRepresentacao() == 'k'){
+                    if(corRei.equals(casa.getPeca().getCor())){
+                        return casa;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
 
 

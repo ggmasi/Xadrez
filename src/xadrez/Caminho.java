@@ -3,7 +3,7 @@ package xadrez;
 public class Caminho {
     private final Tabuleiro tab;
     private final String rota;
-    private final boolean situacao;
+    private boolean situacao;
 
     public Caminho(Tabuleiro tabuleiro, String cam) {
         this.tab = tabuleiro;
