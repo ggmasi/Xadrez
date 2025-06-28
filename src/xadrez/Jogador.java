@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Jogador {
+
     private final String nome;
     private final String cor;
     private final List<Peca> pecas;
-    private List<Peca> pecasCapturadas;
+    private final List<Peca> pecasCapturadas;
     
     
     public Jogador(String nome, String cor)
@@ -67,4 +68,5 @@ public class Jogador {
     public String getCor(){
         return cor;
     }
+
 }
