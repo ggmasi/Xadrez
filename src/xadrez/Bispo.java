@@ -4,7 +4,16 @@ public class Bispo extends Peca {
 
     public Bispo(String cor) {
         super(cor);
-        this.representacao = 'B';
+        if (cor.equalsIgnoreCase("branco")) {
+            this.representacao = 'B';
+        } else {
+            this.representacao = 'b';
+        }
+    }
+    
+    @Override
+    public String desenho() {
+        return String.valueOf(this.representacao) + String.valueOf(this.representacao); 
     }
 
     @Override

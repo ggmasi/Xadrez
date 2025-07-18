@@ -4,7 +4,16 @@ public class Dama extends Peca {
 
     public Dama(String cor) {
         super(cor);
-        this.representacao = 'Q';
+        if (cor.equalsIgnoreCase("branco")) {
+            this.representacao = 'D';
+        } else {
+            this.representacao = 'd';
+        }
+    }
+    
+    @Override
+    public String desenho() {
+        return String.valueOf(this.representacao) + String.valueOf(this.representacao); 
     }
 
     @Override

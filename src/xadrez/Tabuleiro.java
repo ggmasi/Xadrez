@@ -8,19 +8,40 @@ package xadrez;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tabuleiro{
+public class Tabuleiro implements Cloneable{
     
     private Casa[][] casas;
     
     public Tabuleiro(){
         casas = new Casa[8][8];
         
-        for(int linha = 0; linha < 8; linha++){
-            for(int coluna = 0; coluna < 8; coluna++){
-                String cor = (coluna + linha) % 2 == 0? "branco": "preto";
-                char letraColuna = (char) ('a' + coluna);
-                casas[linha][coluna] = new Casa(cor, linha, letraColuna);
-            }      
+        for (int i = 0; i < 8; i++) { 
+            for (int j = 0; j < 8; j++) { 
+                int linhaTabuleiro = i + 1; 
+                char colunaTabuleiro = (char) ('a' + j); 
+                
+                String cor = ((i + j) % 2 == 0) ? "branca" : "preta";
+                casas[i][j] = new Casa(cor, linhaTabuleiro, colunaTabuleiro);
+            }
+        }
+    }
+    
+    @Override
+    public Tabuleiro clone() throws CloneNotSupportedException {
+        try {
+            Tabuleiro copia = (Tabuleiro) super.clone();
+
+            
+            copia.casas = new Casa[8][8];
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    copia.casas[i][j] = this.casas[i][j].clone();
+                }
+            }
+
+            return copia;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
         }
     }
     
@@ -31,14 +52,14 @@ public class Tabuleiro{
    public Casa getCasa(int linha, char coluna){
        if(noLimite(linha,coluna))
            return casas[linha - 1][coluna - 'a'];
-        return null; 
+       return null; 
    }
 
     public String desenho() {
         StringBuilder sb = new StringBuilder();
 
         for (int linha = 7; linha >= 0; linha--) {
-            sb.append(linha + 1).append(" "); // número da linha
+            sb.append(linha + 1).append(" ");
 
             for (int coluna = 0; coluna < 8; coluna++) {
                 sb.append(casas[linha][coluna].toString()).append(" ");
@@ -87,7 +108,7 @@ public class Tabuleiro{
         
         casas[0][7].setPeca(torre2b);
         
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 8; i++){
             Peao peaob = new Peao("branco");
             casas[1][i].setPeca(peaob);
         }
@@ -126,7 +147,7 @@ public class Tabuleiro{
         
         casas[7][7].setPeca(torre2p);
         
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 8; i++){
             Peao peaop = new Peao("preto");
             casas[6][i].setPeca(peaop);
         }  
@@ -139,9 +160,10 @@ public class Tabuleiro{
     for (int linha = 0; linha < 8; linha++) {
         for (int coluna = 0; coluna < 8; coluna++) {
             Casa casa = casas[linha][coluna];
-
-            if (casa.temPeca() && casa.getPeca().getCor().equalsIgnoreCase(cor)) {
-                casasFiltradas.add(casa);
+            if(casa.getPeca() != null){
+                if (casa.temPeca() && casa.getPeca().getCor().equalsIgnoreCase(cor)) {
+                    casasFiltradas.add(casa);
+                }
             }
         }
     }
@@ -155,9 +177,11 @@ public class Tabuleiro{
         for(int linha = 0; linha < 8; linha++){
             for(int coluna = 0; coluna < 8; coluna++){
                 Casa casa = casas[linha][coluna];
-                if(casa.getPeca().getRepresentacao() == 'K' || casa.getPeca().getRepresentacao() == 'k'){
-                    if(corRei.equals(casa.getPeca().getCor())){
-                        return casa;
+                if(casa.getPeca() != null) { 
+                    if(casa.getPeca().getRepresentacao() == 'R' || casa.getPeca().getRepresentacao() == 'r'){
+                        if(corRei.equals(casa.getPeca().getCor())){
+                            return casa;
+                        }
                     }
                 }
             }

@@ -4,16 +4,25 @@ public class Peao extends Peca {
     
     public Peao(String cor) {
         super(cor);
-        this.representacao = 'P';
+        if (cor.equalsIgnoreCase("branco")) {
+            this.representacao = 'P';
+        } else {
+            this.representacao = 'p';
+        }
+    }
+    
+    @Override
+    public String desenho() {
+        return String.valueOf(this.representacao) + String.valueOf(this.representacao); // Using two characters for empty spaces (e.g., "PP")
     }
     
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
         if (linhaO == linhaD && colunaO == colunaD) return false;
-        if ((Math.abs(linhaO - linhaD) > 1)) {
-            return false;
+        if((linhaO == 2 && cor.equals("branco")) || (linhaO == 7 && cor.equals("preto"))){
+            return (Math.abs(linhaO - linhaD) <= 2);
         }
-        return true;
+        return (Math.abs(linhaO - linhaD) <= 1);
     }
 
     
