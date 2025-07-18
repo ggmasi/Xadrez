@@ -81,10 +81,10 @@ public class Jogada {
             
             for (Casa dest : movimentosPossiveisDaPeca) {
                 Jogada hipoteticaJogada = new Jogada(
-                    new Jogador("temp", corReiEmXeque), // Cria um Jogador temporário para a jogada hipotética
-                    c,                                 // Casa de origem da peça adversária
-                    dest,                              // Casa de destino da peça adversária
-                    dest.temPeca() ? dest.getPeca() : null // Peça que seria capturada (pode ser null)
+                    new Jogador("temp", corReiEmXeque),
+                    c,                                 
+                    dest,                             
+                    dest.temPeca() ? dest.getPeca() : null 
                 );
 
                 if (hipoteticaJogada.ehValida(tabuleiro)) {
