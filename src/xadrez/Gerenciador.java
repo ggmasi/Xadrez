@@ -98,9 +98,7 @@ public class Gerenciador {
         }
     }
 
-    /**
-     * Método de teste para desenvolvimento incremental
-     */
+    
     public void teste() throws CloneNotSupportedException {
         System.out.println("=== Iniciando testes ===");
 
