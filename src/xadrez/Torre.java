@@ -4,7 +4,16 @@ public class Torre extends Peca {
 
     public Torre(String cor) {
         super(cor);
-        this.representacao = 'R';
+        if (cor.equalsIgnoreCase("branco")) {
+            this.representacao = 'T';
+        } else {
+            this.representacao = 't';
+        }
+    }
+    
+    @Override
+    public String desenho() {
+        return String.valueOf(this.representacao) + String.valueOf(this.representacao); 
     }
 
     @Override

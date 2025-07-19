@@ -4,7 +4,7 @@ package xadrez;
  *
  * @author ggmasi
  */
-public class Casa {
+public class Casa implements Cloneable{
     
     private final String cor;
     private final int linha;
@@ -19,6 +19,28 @@ public class Casa {
         temPeca = false; // ao criar uma casa nao deve ter peca
     }
     
+    @Override
+    public Casa clone() throws CloneNotSupportedException {
+        try {
+            Casa copia = (Casa) super.clone();
+            if (copia.peca != null) {
+                copia.peca = copia.peca.clone();
+            }
+            return copia;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    @Override
+    public String toString() {
+        if (peca != null) {
+            return peca.desenho(); 
+        } else {
+            return "--";
+        }
+    }
+    
     public boolean setPeca(Peca peca){
         if(!temPeca){
             this.peca = peca;
@@ -28,14 +50,14 @@ public class Casa {
         return false; 
     }
     
-    public Peca removePeca(){ //remove a peça da casa e retorna ela
+    public Peca removePeca(){ 
         if(temPeca){
             Peca removida = peca;
             peca = null; 
             temPeca = false;
             return removida;
         }
-        return null; // caso nao tenha, retorna null
+        return null; 
     } 
 
     public String getCor(){

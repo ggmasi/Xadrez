@@ -2,7 +2,7 @@ package xadrez;
 import java.util.ArrayList;
 import java.util.List;    
 
-public abstract class Peca {
+public abstract class Peca implements Cloneable{
     protected String cor;
     protected char representacao;
     
@@ -10,14 +10,16 @@ public abstract class Peca {
         this.cor = cor;
     }
     
-    public String desenho(){
-        char corletra;
-        if(this.cor.equals("preto"))
-            corletra = 'p';
-        else
-            corletra = 'b';
-        return "" + this.representacao + corletra;
+    @Override
+    public Peca clone() throws CloneNotSupportedException {
+        try {   
+            return (Peca) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
+    
+  
     
     public String getCor(){
         return this.cor;
@@ -40,7 +42,9 @@ public abstract class Peca {
 
                 if (destino == null) continue;
 
-                if (!destino.temPeca() || !destino.getPeca().getCor().equals(this.cor)) {
+                if(!destino.temPeca()){
+                    validas.add(destino);
+                }else if(!destino.getPeca().getCor().equals(this.cor)){
                     validas.add(destino);
                 }
             }
@@ -50,6 +54,7 @@ public abstract class Peca {
     return validas;
 }
 
+    public abstract String desenho();
     
     public abstract boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD);
     

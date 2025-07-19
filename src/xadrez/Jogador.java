@@ -21,19 +21,19 @@ public class Jogador {
         
         for (int i = 0; i < 8; i++)
         {
-            pecas.set(i, new Peao(this.cor));
+            pecas.add(new Peao(this.cor));
         }
-        pecas.set(8, new Torre(this.cor));
-        pecas.set(9, new Torre(this.cor));
+        pecas.add(new Torre(this.cor));
+        pecas.add(new Torre(this.cor));
         
-        pecas.set(10, new Bispo(this.cor));
-        pecas.set(11, new Bispo(this.cor));
+        pecas.add(new Bispo(this.cor));
+        pecas.add(new Bispo(this.cor));
         
-        pecas.set(12, new Cavalo(this.cor));
-        pecas.set(13, new Cavalo(this.cor));
+        pecas.add(new Cavalo(this.cor));
+        pecas.add(new Cavalo(this.cor));
         
-        pecas.set(14, new Torre(this.cor));
-        pecas.set(15, new Torre(this.cor));
+        pecas.add(new Rei(this.cor));
+        pecas.add(new Dama(this.cor));
     }
     
     public String informaJogada()
