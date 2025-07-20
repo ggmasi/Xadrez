@@ -106,10 +106,10 @@ public class Gerenciador {
         t.inicializar();
         System.out.println(t.desenho());
 
-        Jogador j1 = new Jogador("Ana", "branco");
-        Jogador j2 = new Jogador("Beto", "preto");
+        Jogador j1 = new Jogador("ggmasi", "branco");
+        Jogador j2 = new Jogador("Nickao", "preto");
 
-        Casa origem = t.getCasa(2, 'a');
+        Casa origem = t.getCasa(2, 'a');    
         Casa destino = t.getCasa(3, 'a');
 
         Jogada jogada = new Jogada(j1, origem, destino, destino.getPeca());

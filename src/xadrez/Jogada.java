@@ -41,8 +41,6 @@ public class Jogada {
         Caminho cam = new Caminho(tabuleiro, caminhoSeq);
         if(origem.getPeca().getRepresentacao() != 'C' && origem.getPeca().getRepresentacao() != 'c'){
             if (!cam.estaLivre()) {
-                System.out.println(caminhoSeq);
-                System.out.println(cam.getRota());
                 return false;
             }
         }
@@ -66,7 +64,7 @@ public class Jogada {
     }
     
     public boolean ehXequeMate(Tabuleiro tabuleiro) throws CloneNotSupportedException {
-        String corReiEmXeque = this.jogador.getCor(); 
+        String corReiEmXeque = oposto(this.jogador.getCor()); 
 
         if (!detectaXeque(tabuleiro, corReiEmXeque)) { 
             return false; 
@@ -100,7 +98,7 @@ public class Jogada {
     }
     
     public String getCodigo(){
-        return String.format("%s%d%s%d", origem.getColuna(), origem.getLinha(), destino.getColuna(), destino.getLinha());
+        return String.format("%d%s%d%s", origem.getLinha(), origem.getColuna(), destino.getLinha(), destino.getColuna());
     }
     
     private Tabuleiro simularMovimento(Tabuleiro tab) throws CloneNotSupportedException {
