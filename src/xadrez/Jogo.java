@@ -12,7 +12,7 @@ public class Jogo {
     private final List<Jogada> historico;
     private final Scanner sc = new Scanner(System.in);
     
-    public Jogo(){
+    public Jogo() throws CloneNotSupportedException{
         System.out.println("Nome do jogador branco: ");
         String nomeBranco = sc.nextLine();
         System.out.println("Nome do jogador preto: ");
@@ -29,7 +29,7 @@ public class Jogo {
         atualizarTela();
     }
     
-    public Jogo(String nomeBranco, String nomePreto) {
+    public Jogo(String nomeBranco, String nomePreto) throws CloneNotSupportedException {
         this.branco = new Jogador(nomeBranco, "branco");
         this.preto = new Jogador(nomePreto, "preto");
         this.atual = branco;
@@ -91,9 +91,6 @@ public class Jogo {
         historico.add(jogada);
         trocarVez();
         atualizarTela();
-        atualizarEstado();
-        
-        
         
     }
     
@@ -111,28 +108,41 @@ public class Jogo {
         atual = atual == branco ? preto : branco;    
     }
     
-    private void atualizarEstado() throws CloneNotSupportedException{
-        Jogada ultima = historico.get(historico.size() - 1);
+    private String atualizarEstado() throws CloneNotSupportedException{
+        if(!historico.isEmpty()){
+            Jogada ultima = historico.get(historico.size() - 1);
 
-        if (ultima.ehXequeMate(tabuleiro)) {
-            estado = "Xeque-Mate";
-            System.out.println("Xeque-Mate! Vencedor: " + atual.getNome());
-            System.exit(0);
-        } else if (ultima.ehXeque(tabuleiro)) {
-            estado = "Xeque";
-            System.out.println("XEQUE!");
-        } else {
-            estado = "Em andamento";
+            if (ultima.ehXequeMate(tabuleiro)) {
+                estado = "Xeque-Mate";
+                //System.out.println("Xeque-Mate! Vencedor: " + atual.getNome());
+                //System.exit(0);
+            } else if (ultima.ehXeque(tabuleiro)) {
+                estado = "Xeque";
+                //System.out.println("XEQUE!");
+            } else {
+                estado = "Em andamento";
+            }
         }
+        
+        return estado;
     }
     
-    private void atualizarTela(){
+    private void atualizarTela() throws CloneNotSupportedException{
         System.out.println(tabuleiro.desenho());
-        System.out.println("Brancas capturadas: " + branco.pecasCapturadas());
-        System.out.println("Pretas capturadas: " + preto.pecasCapturadas());
-        System.out.println("Vez de: " + atual.getNome() + " (" + atual.getCor() + ")");
+        System.out.println(atualizarEstado());
+        if(!"Xeque-Mate".equals(estado)){
+            System.out.println("Brancas capturadas: " + branco.pecasCapturadas());
+            System.out.println("Pretas capturadas: " + preto.pecasCapturadas());
+            System.out.println("Vez de: " + atual.getNome() + " (" + atual.getCor() + ")");
+        }else{
+            System.out.println("FIM DE JOGO!");
+            trocarVez();
+            System.out.println("VENCEDOR: " + atual.getNome());
+        }
+        
     }
     
+    @SuppressWarnings("empty-statement")
     public void iniciar() throws CloneNotSupportedException { 
     while (true) {
         String entrada = atual.informaJogada();
@@ -147,18 +157,20 @@ public class Jogo {
             continue;
         }
 
-        /*try {*/
+        try {
             int linhaO = Character.getNumericValue(entrada.charAt(1));
             char colunaO = entrada.charAt(0);
             int linhaD = Character.getNumericValue(entrada.charAt(3));
             char colunaD = entrada.charAt(2);
 
             realizarJogada(linhaO, colunaO, linhaD, colunaD);
-        /*} catch (CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {;
             System.out.println("Erro de clonagem durante a jogada: " + e.getMessage());
-        } catch (Exception e) { // Outras possíveis exceções na interpretação/lógica
+        } catch (Exception e) { 
             System.out.println("Erro ao interpretar ou realizar jogada: " + e.getMessage());
-        }*/
+        }
+        
+        if(estado.equals("Xeque-Mate")) return;
     }
 }
 

@@ -18,11 +18,32 @@ public class Peao extends Peca {
     
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
+
         if (linhaO == linhaD && colunaO == colunaD) return false;
-        if((linhaO == 2 && cor.equals("branco")) || (linhaO == 7 && cor.equals("preto"))){
-            return (Math.abs(linhaO - linhaD) <= 2);
+
+
+        int dir = "branco".equalsIgnoreCase(this.cor) ? 1 : -1;
+
+
+        int deltaLinha = linhaD - linhaO;
+        int deltaColuna = colunaD - colunaO;
+
+
+        if (deltaColuna == 0) {
+
+            if (deltaLinha == dir) {
+                return true;
+            }
+            boolean primeiroMovimentoBranco = (linhaO == 2 && dir ==  1);
+            boolean primeiroMovimentoPreto   = (linhaO == 7 && dir == -1);
+            return (primeiroMovimentoBranco || primeiroMovimentoPreto) && deltaLinha == 2 * dir;
         }
-        return (Math.abs(linhaO - linhaD) <= 1);
+
+        if (Math.abs(deltaColuna) == 1 && deltaLinha == dir) {
+            return true;
+        }
+
+        return false;
     }
 
     
