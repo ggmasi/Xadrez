@@ -1,9 +1,5 @@
 package xadrez;
 
-/**
- *
- * @author ggmasi
- */
 public class Casa implements Cloneable {
     
     private final String cor;      // cor da casa (branca ou preta)

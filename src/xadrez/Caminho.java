@@ -11,7 +11,7 @@ public class Caminho {
         this.situacao = false; // Inicialmente, considera-se caminho não livre
     }
 
-    /**
+    /*
      * Verifica se o caminho da peça está livre (sem peças bloqueando entre origem e destino).
      * Importante: ignora a casa de origem e destino, verifica só casas intermediárias.
      * @return true se estiver livre, false caso contrário.
@@ -50,7 +50,7 @@ public class Caminho {
         return true;
     }
 
-    /**
+    /*
      * Retorna a casa inicial do caminho (origem do movimento)
      */
     public Casa casaInicial() {
@@ -62,7 +62,7 @@ public class Caminho {
         return tab.getCasa(numero, letra);
     }
 
-    /**
+    /*
      * Retorna a casa final do caminho (destino do movimento)
      */
     public Casa casaFinal() {

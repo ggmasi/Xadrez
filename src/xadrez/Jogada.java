@@ -22,7 +22,7 @@ public class Jogada {
         this.caminhoSeq = (peca != null) ? peca.caminho(origem.getLinha(), origem.getColuna(), destino.getLinha(), destino.getColuna()) : "";
     }
     
-    /**
+    /*
      * Verifica se a jogada é válida:
      * - Origem e destino dentro do tabuleiro
      * - Origem possui peça da cor do jogador
@@ -68,7 +68,7 @@ public class Jogada {
         return true;
     }
     
-    /**
+    /*
      * Verifica se a jogada causa xeque no adversário.
      */
     public boolean ehXeque(Tabuleiro tabuleiro) throws CloneNotSupportedException {
@@ -77,7 +77,7 @@ public class Jogada {
         return detectaXeque(tAposMovimento, corOponente);
     }
     
-    /**
+    /*
      * Verifica se a jogada resulta em xeque-mate.
      */
     public boolean ehXequeMate(Tabuleiro tabuleiro) throws CloneNotSupportedException {
@@ -118,14 +118,14 @@ public class Jogada {
         return true; // Se nenhuma jogada remove o xeque, é xeque mate
     }
     
-    /**
+    /*
      * Gera o código da jogada no formato "2a4a" (linha e coluna origem + destino)
      */
     public String getCodigo(){
         return String.format("%d%s%d%s", origem.getLinha(), origem.getColuna(), destino.getLinha(), destino.getColuna());
     }
     
-    /**
+    /*
      * Simula o movimento no tabuleiro clonando o estado atual,
      * para análise sem modificar o tabuleiro real.
      */
@@ -157,7 +157,7 @@ public class Jogada {
         return copia;
     }
     
-    /**
+    /*
      * Verifica se a jogada deixa o próprio rei em xeque (não permitido).
      */
     private boolean causaXequeProprio(Tabuleiro tabuleiro) throws CloneNotSupportedException {
@@ -165,7 +165,7 @@ public class Jogada {
         return detectaXeque(tAposMovimento, jogador.getCor()); 
     }
     
-    /**
+    /*
      * Detecta se um rei de determinada cor está em xeque no tabuleiro dado.
      * Verifica se alguma peça adversária pode atacar o rei.
      */
@@ -201,7 +201,7 @@ public class Jogada {
         return false; // Rei não está em xeque
     }
     
-    /**
+    /*
      * Retorna a cor oposta à dada.
      */
     private String oposto(String cor) {

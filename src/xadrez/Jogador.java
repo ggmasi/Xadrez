@@ -11,7 +11,7 @@ public class Jogador {
     private final List<Peca> pecas;            // Lista das peças que o jogador possui no início do jogo
     private final List<Peca> pecasCapturadas; // Lista das peças capturadas pelo jogador durante o jogo
 
-    /**
+    /*
      * Construtor que inicializa um jogador com nome, cor e todas as peças na configuração padrão.
      * Cria 8 peões, 2 torres, 2 bispos, 2 cavalos, 1 rei e 1 dama da cor do jogador.
      */
@@ -45,7 +45,7 @@ public class Jogador {
         pecas.add(new Dama(this.cor));
     }
     
-    /**
+    /*
      * Método para ler a jogada do jogador a partir da entrada do console.
      * Utiliza Scanner para capturar o input do usuário.
      * @return String representando a jogada informada pelo jogador.
@@ -56,7 +56,7 @@ public class Jogador {
         return jogada;
     }
     
-    /**
+    /*
      * Retorna uma string com a representação das peças capturadas pelo jogador.
      * Cada peça capturada é representada pelo seu desenho (caractere ou símbolo).
      * @return String contendo os desenhos das peças capturadas separados por espaço.
@@ -70,7 +70,7 @@ public class Jogador {
         return sb.toString().trim();
     }
     
-    /**
+    /*
      * Adiciona uma peça capturada à lista de peças capturadas do jogador.
      * @param peca Peça capturada a ser adicionada.
      */
@@ -78,7 +78,7 @@ public class Jogador {
         this.pecasCapturadas.add(peca);
     }
     
-    /**
+    /*
      * Getter para obter o nome do jogador.
      * @return Nome do jogador.
      */
@@ -86,7 +86,7 @@ public class Jogador {
         return nome;
     }
     
-    /**
+    /*
      * Getter para obter a cor das peças do jogador.
      * @return Cor das peças ("branco" ou "preto").
      */
