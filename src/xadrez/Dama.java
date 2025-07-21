@@ -1,21 +1,25 @@
 package xadrez;
 
+// classe que representa a dama (rainha) no xadrez
 public class Dama extends Peca {
 
     public Dama(String cor) {
         super(cor);
+        // define a representação com base na cor
         if (cor.equalsIgnoreCase("branco")) {
             this.representacao = 'D';
         } else {
             this.representacao = 'd';
         }
     }
-    
+
+    // retorna o desenho da peça no tabuleiro (ex: "DD" ou "dd")
     @Override
     public String desenho() {
         return String.valueOf(this.representacao) + String.valueOf(this.representacao); 
     }
 
+    // verifica se o movimento é válido para uma dama (linha, coluna ou diagonal)
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
         if (linhaO == linhaD && colunaO == colunaD) return false;
@@ -24,6 +28,7 @@ public class Dama extends Peca {
         return (linhaO == linhaD || colunaO == colunaD || difLinha == difColuna);
     }
 
+    // retorna o caminho entre a origem e o destino da peça (linha, coluna ou diagonal)
     @Override
     public String caminho(int linhaO, char colunaO, int linhaD, char colunaD) {
         if (!movimentoValido(linhaO, colunaO, linhaD, colunaD)) {
@@ -44,6 +49,7 @@ public class Dama extends Peca {
         int linha = linhaO + passoLinha;
         char coluna = (char)(colunaO + passoColuna);
 
+        // percorre o caminho até o destino
         while (linha != linhaD || coluna != colunaD) {
             caminho += "" + linha + coluna;
             linha += passoLinha;
@@ -53,5 +59,4 @@ public class Dama extends Peca {
         caminho += "" + linhaD + colunaD;
         return caminho;
     }
-
 }

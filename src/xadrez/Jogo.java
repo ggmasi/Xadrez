@@ -18,7 +18,7 @@ public class Jogo {
         System.out.println("Nome do jogador preto: ");
         String nomePreto = sc.nextLine();
         
-        this.branco = new Jogador(nomeBranco, "branco");
+        this.branco = new Jogador(nomeBranco, "branco"); // inicia os jogadores
         this.preto = new Jogador(nomePreto, "preto");
         this.atual = branco;
         this.tabuleiro = new Tabuleiro();
